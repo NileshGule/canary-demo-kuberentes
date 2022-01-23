@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build-env
 
 
-# WORKDIR /TechTalksAPI
+WORKDIR /app
 # COPY NuGet.config ./
 COPY canary-demo-kubernetes.csproj ./
 
