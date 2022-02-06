@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: green-deployment
+  labels:
+    app: blue-green-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: green
+
+  template:
+    metadata:
+      labels:
+        app: green
+    spec:
+      containers:
+        - name: green-container
+          image: nileshgule/blue-green-demo:green
+          resources:
+            requests:
+              cpu: "10m" #1% of a core
+              memory: "150Mi"
+            limits:
+              cpu: "50m" #5% of a core
+              memory: "400Mi"
+          imagePullPolicy: Always
+      restartPolicy: Always
+      
+      
